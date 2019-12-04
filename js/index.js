@@ -24,18 +24,21 @@ document.querySelectorAll("h2").forEach(element => {
     funbus.style.transition = "transform 0.3s"
   });
 
-const stopLink = document.querySelector(".nav-link");
-stopLink.addEventListener("click", (event) => {
-  event.preventDefault();
+const stopLink = document.querySelectorAll(".nav-link")
+stopLink.forEach(element => {
+    element.addEventListener("click", (event) => {
+    event.stopPropagation();
+})});
+
+document.querySelector("body").addEventListener("click", () => {
+ document.body.style.backgroundColor = "red";
 });
+
 const prevent = document.querySelector(".intro h2");
 prevent.addEventListener("keydown", (event1) => {
   event1.stopPropagation();
 });
-const prevent1 = document.querySelector(".nav:first-child ");
-prevent1.addEventListener("mouseover", (event2) => {
-  event2.stopPropagation();
-});
+
 // Resize.....................................................
 window.addEventListener('resize', () => {
     funbus.src ="img/destination.jpg"
@@ -76,4 +79,4 @@ object.addEventListener("select", () => {
 const all = document.querySelector(".intro p")
 document.addEventListener('keydown', ()  => {
   all.style.color= "red";
-})
+});
